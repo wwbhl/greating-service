@@ -19,10 +19,20 @@ public class GreetingController {
 	@Value("${server.port}")
 	private String port;
 	
+	@Value("${name}")
+	private String defaultName;
+	
 	@RequestMapping("/greeting")
 	public String greeting(@RequestParam String name) {
-		String result = sayHelloService.sayHello(name);
+		String result = null;
+		if(name != null && !"".equals(name)) {
+			result = sayHelloService.sayHello(name);
+		}else {
+		
+			result = "hello, this is default name: " + defaultName;
+		}
 		result += " , through greeting service from port: " + port;
+		
 		return result;
 	}
 }
