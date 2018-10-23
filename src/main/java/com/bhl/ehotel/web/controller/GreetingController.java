@@ -19,7 +19,7 @@ public class GreetingController {
 	@Value("${server.port}")
 	private String port;
 	
-	@Value("${name}")
+	@Value("${defaultName}")
 	private String defaultName;
 	
 	@RequestMapping("/greeting")
